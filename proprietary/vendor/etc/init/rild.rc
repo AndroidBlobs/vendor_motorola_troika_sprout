@@ -1,0 +1,15 @@
+service ril-daemon /vendor/bin/hw/rild_exynos
+    class main hal
+    user radio
+    group radio cache inet misc audio log readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    onrestart restart cpboot-daemon
+    onrestart restart RFS-daemon
+    seclabel u:r:rild:s0
+
+on property:vendor.sys.rild_reset=1
+    stop ril-daemon
+    stop RFS-daemon
+    setprop vendor.sys.rild_reset 0
+    start ril-daemon
+    start RFS-daemon

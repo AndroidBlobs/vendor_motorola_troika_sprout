@@ -1,0 +1,5 @@
+service ALT_TEST /vendor/bin/alt_autocycle
+	class factory
+	user system
+	group system
+

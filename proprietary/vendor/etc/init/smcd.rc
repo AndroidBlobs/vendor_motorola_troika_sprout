@@ -1,0 +1,5 @@
+service smcd /vendor/bin/smcd
+    class factory
+    user system
+    group system
+

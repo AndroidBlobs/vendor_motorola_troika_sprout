@@ -1,0 +1,8 @@
+on post-fs-data && property:ro.bootmode=sfactory
+	setprop sys.boot_completed 1
+
+service swcnd /vendor/bin/swcnd --wl "/vendor/lib64/libwlbt.so" --wt 12 --gl "/vendor/lib64/hw/android.hardware.gnss@1.1-impl.so" --gt 15
+    class factory
+    user root
+    group system bluetooth radio misc
+

@@ -1,0 +1,25 @@
+on property:ro.bootmode=mot-factory
+	class_start factory
+
+on fs && property:ro.bootmode=mot-factory
+	symlink /dev/block/platform/13520000.ufs/by-name/proinfo /mnt/vendor/proinfo
+	symlink /dev/block/platform/13520000.ufs/by-name/proinfo_backup /mnt/vendor/proinfobk
+	mount ext4 /dev/block/platform/13520000.ufs/by-name/efsbk /mnt/vendor/efsbk wait rw
+
+on post-fs-data && property:ro.bootmode=mot-factory
+    restorecon_recursive /mnt/vendor/proinfo
+    restorecon_recursive /mnt/vendor/proinfobk
+    restorecon_recursive /mnt/vendor/efsbk
+    chmod 770 /mnt/vendor/efsbk
+    chown root system /mnt/vendor/efsbk
+    chown root system /mnt/vendor/efsbk/nv_normal.bin
+    chown root system /mnt/vendor/efsbk/nv_normal.bin.mk5
+    chown root system /mnt/vendor/efsbk/nv_protected.bin
+    chown root system /mnt/vendor/efsbk/nv_protected.bin.mk5
+    chmod 770 /mnt/vendor/proinfo
+    chown root system /mnt/vendor/proinfo
+    chmod 770 /mnt/vendor/proinfobk
+    chown root system /mnt/vendor/proinfobk
+    chmod 607 /dev/block/sda6
+    chmod 607 /dev/block/sda7
+
