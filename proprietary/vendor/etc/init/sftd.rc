@@ -1,0 +1,4 @@
+service SFT-daemon  /vendor/bin/sftd
+    class factory
+    user system
+    group system

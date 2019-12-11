@@ -1,0 +1,40 @@
+{
+	"wlan"	:	{
+				"libpath"     :	"/vendor/lib64/libwlbt.so",
+				"timeout"     :	12,
+				"support"     :	true,
+				"mode-active" :	false,
+				"ext-mode"    :	"TCP",
+				"port"        :	2543,
+				"whitelist"   :	[
+							"RF+AP2WB",
+							"RF+WB2AP",
+							"AT+WIFIRF",
+							"ATA+WIFI"
+						]
+			},
+	"bt"	:	{
+				"libpath"     :	"/vendor/lib64/libwlbt.so",
+				"timeout"     :	15,
+				"support"     :	true,
+				"mode-active" :	false,
+				"port"        :	2544,
+				"whitelist"   :	[
+							"RF+AP2WB",
+							"RF+WB2AP",
+							"AT+BTRF",
+							"ATA+BT"
+						]
+			},
+	"gnss"	:	{
+				"libpath"    :	"/vendor/lib64/hw/android.hardware.gnss@1.1-impl.so",
+				"timeout"    :	15,
+				"support"    :	true,
+				"port"       :	2545,
+				"whitelist"  :	[
+							"AT+GPSFTTEST",
+							"ATA+GPS"
+						]
+			}
+}
+
